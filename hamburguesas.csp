@@ -1,0 +1,57 @@
+##### c4q.csp = hamburger problem
+
+##########################################
+###   Requetes, Parametres et Options  ###
+##########################################
+ 
+\alpha = 0.8;
+\filtering : f ;
+\search : rfla ,
+	all_solutions
+#	best_solution
+#	first_solutions 5
+;
+\static_labeling_order  :
+	smallest_domain 
+#	greatest_degree
+#	smallest_domain_by_degree
+;
+#\dynamic_labeling_order :
+#	smallest_domain 
+#	smallest_domain_by_degree
+#
+;
+\verbose : 
+	display_solutions 
+#	display_csp
+#	display_filtering
+#	display_search
+#       display_intervals
+;
+
+##############################
+###       VARIABLES        ###
+############################## 
+
+\vi : H 1..4;
+\vi : P 2..5;
+\vi : Q, B, C 0..3;
+
+##############################
+###      CONTRAINTES       ###
+##############################
+
+
+\ci : rd1 , P = H + 1 ;
+
+\doc: Doc3
+		\ci : C1 , Q > 0; 
+	\or
+		\ci : C1 , B > 0;
+	\or
+		\ci : C1 , C > 0;
+;
+
+
+
+

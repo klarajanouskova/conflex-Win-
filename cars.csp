@@ -1,0 +1,154 @@
+##### c4q.csp = cars problem
+
+##########################################
+###   Requetes, Parametres et Options  ###
+##########################################
+ 
+\alpha = 0.1;
+\filtering : f ;
+\search : rfla ,
+	all_solutions
+#	best_solution
+#	first_solutions 5
+;
+\static_labeling_order  :
+	smallest_domain 
+#	greatest_degree
+#	smallest_domain_by_degree
+;
+#\dynamic_labeling_order :
+#	smallest_domain 
+#	smallest_domain_by_degree
+#
+;
+\verbose : 
+	display_solutions 
+#	display_csp
+#	display_filtering
+#	display_search
+#       display_intervals
+;
+
+##############################
+###       VARIABLES        ###
+############################## 
+
+\vi : M1, M2, M3, M4, M5 0..3;
+
+##############################
+###      CONTRAINTES       ###
+##############################
+
+#1a
+# (na or b or c)
+\doc: Doc1
+		\ci : C1 , M1 != 1; 
+	\or
+		\ci : C2 , M2 = 1;
+	\or
+		\ci : C3 , M2 = 2;
+;
+
+# (nb or a)
+\doc: Doc2
+		\ci : C1 , M2 != 1; 
+	\or
+		\ci : C2 , M1 = 1;
+;
+
+# (nc or a)
+\doc: Doc3
+		\ci : C1 , M2 != 2; 
+	\or
+		\ci : C2 , M1 = 1;
+;
+
+#1b
+# (na or b or c)
+\doc: Doc4
+		\ci : C1 , M1 != 2; 
+	\or
+		\ci : C2 , M3 = 0;
+	\or
+		\ci : C3 , M5 = 3;
+;
+
+# (nb or a)
+\doc: Doc5
+		\ci : C1 , M3 != 0; 
+	\or
+		\ci : C2 , M1 = 2;
+;
+
+# (nc or a)
+\doc: Doc6
+		\ci : C1 , M5 != 3; 
+	\or
+		\ci : C2 , M1 = 2;
+;
+
+
+#2a
+# (na or b or c or d)
+\doc: Doc7
+		\ci : C1 , M2 != 1; 
+	\or
+		\ci : C2 , M1 = 1;
+	\or
+		\ci : C3 , M1 = 2;
+	\or
+		\ci : C3 , M5 = 0;
+;
+
+# (nb or a)
+\doc: Doc8
+		\ci : C1 , M1 != 1; 
+	\or
+		\ci : C2 , M2 = 1;
+;
+
+# (nc or a)
+\doc: Doc9
+		\ci : C1 , M1 != 2; 
+	\or
+		\ci : C2 , M2 = 1;
+;
+
+# (nd or a)
+\doc: Doc10
+		\ci : C1 , M5 != 0; 
+	\or
+		\ci : C2 , M2 = 1;
+;
+
+
+#2b
+# (na or b or c)
+\doc: Doc11
+		\ci : C1 , M2 != 2; 
+	\or
+		\ci : C2 , M3 = 3;
+	\or
+		\ci : C3 , M4 = 3;
+;
+
+# (nb or a)
+\doc: Doc12
+		\ci : C1 , M3 != 3; 
+	\or
+		\ci : C2 , M2 = 2;
+;
+
+# (nc or a)
+\doc: Doc13
+		\ci : C1 , M4 != 3; 
+	\or
+		\ci : C2 , M2 = 2;
+;
+
+
+# 3
+
+\cim : ct1 , <>(M3 M4 M5);
+
+\cim : ct2 , <>(M1 M2);
